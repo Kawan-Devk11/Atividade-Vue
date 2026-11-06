@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Loja Virtual</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header class="cabecalho">
+            <h1>Minha Loja Virtual</h1>
+            <div class="carrinho">
+                🛒 Itens no carrinho:
+                <strong>{{ carrinho }}</strong>
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="introducao">
+                <h2>Nossos Produtos</h2>
+                <p>Encontre produtos e adicione seus favoritos ao carrinho.</p>
+            </section>
+
+            <section class="busca">
+                <input type="text" v-model="pesquisa" placeholder="Pesquisar produto...">
+            </section>
+
+            <section class="produtos">
+                <product-card v-for="produto in produtosFiltrados" :key="produto.id" :product="produto" @add-to-cart="adicionarAoCarrinho">
+                </product-card>
+                <p v-if="produtosFiltrados.length === 0" class="sem-produtos">Nenhum produto encontrado.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>Projeto desenvolvido com Vue.js</p>
+        </footer>
+    </div>
+
+    <!-- Biblioteca Vue.js 3 -->
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Código JavaScript do projeto -->
+
+    <script src="script.js"></script>
+</body>
+</html>
